@@ -5,7 +5,6 @@ Rewrite of existing app using a Google Sheets database as backend for easy manua
 
 ## TODO
 
-- Rename repo
 - Script populate ScheduledFor/SchedulingInterval from existing backend
 - Success scheduling
 - Fail scheduling
@@ -15,3 +14,12 @@ Rewrite of existing app using a Google Sheets database as backend for easy manua
 - API: Success
 - API: Fail
 - API: Dump
+
+## Usage
+
+### Basic setup
+
+- Add `credentials.json` to `/src/main/resources`
+- `gradle run`
+- Go to OAuth link
+- On sucess, prints some basic stats and creates `/tokens/StoredCredential`
