@@ -12,3 +12,6 @@ credentials.json
 .project
 .classpath
 bin/
+
+.theia
+.vscode
