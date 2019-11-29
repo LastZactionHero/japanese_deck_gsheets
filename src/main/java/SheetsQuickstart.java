@@ -11,15 +11,27 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 
+import org.mortbay.io.Buffer;
+
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.GeneralSecurityException;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+
+import javax.sound.midi.SysexMessage;
 
 public class SheetsQuickstart {
     private static final String APPLICATION_NAME = "Google Sheets API Java Quickstart";
@@ -58,13 +70,19 @@ public class SheetsQuickstart {
     }
 
     /**
-     * Prints the names and majors of students in a sample spreadsheet:
-     * https://docs.google.com/spreadsheets/d/1-Oe3qrFv3mhPnpY-48Y5BXHj2f6VzVhLQQT2OUx7KsM/edit#gid=76460882
-     */
-    public static void main(String... args) throws IOException, GeneralSecurityException {
+   * Prints the names and majors of students in a sample spreadsheet:
+   * https://docs.google.com/spreadsheets/d/1-Oe3qrFv3mhPnpY-48Y5BXHj2f6VzVhLQQT2OUx7KsM/edit#gid=76460882
+   * 
+   * @throws Exception
+   */
+  public static void main(String... args) throws Exception {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        final String spreadsheetId = "1-Oe3qrFv3mhPnpY-48Y5BXHj2f6VzVhLQQT2OUx7KsM";
+        final String spreadsheetId = System.getenv("JA_SHEET_ID");
+        if (spreadsheetId == null || spreadsheetId.length() == 0) {
+          throw new IllegalArgumentException("Sheet ID not set");
+        }
+
         final String range = "Terms";
 
         Instant instantStart = Instant.now();
@@ -80,16 +98,18 @@ public class SheetsQuickstart {
         if (values == null || values.isEmpty()) {
             System.out.println("No data found.");
         } else {
-
-
-            // for (List row : values) {
           Instant instantEnd = Instant.now();
           long duration = instantEnd.toEpochMilli() - instantStart.toEpochMilli();
 
           System.out.printf("Terms: %d, %dms\n", values.size(), duration);
-                // Print columns A and E, which correspond to indices 0 and 4.
-                // System.out.printf("%s, %s\n", row.get(0), row.get(1));
-            // }
+
+          DynamoTermReader dtr = new DynamoTermReader();
+          ArrayList<DynamoTerm> dynamoTerms = dtr.fetchTerms();
+        
+          System.out.printf("Scheduled terms: %d\n", dynamoTerms.size());
+          for (DynamoTerm term : dynamoTerms) {
+            term.print();
+          }
         }
     }
 }
