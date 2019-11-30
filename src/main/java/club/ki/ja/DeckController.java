@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DeckController {
   @RequestMapping(value = "/deck", method = RequestMethod.GET, produces = "application/json")
   public String deck() throws Exception {
-    Deck deck = new Deck(new SheetsQuickstart());
+    Deck deck = new Deck(new SheetsService());
     ArrayList<Term> terms = deck.fetch();
 
     Gson gson = new Gson();

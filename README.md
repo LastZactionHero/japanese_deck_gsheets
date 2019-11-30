@@ -2,9 +2,13 @@
 
 Rewrite of existing app using a Google Sheets database as backend for easy manual changes and review.
 
+## Running
+
+`./gradlew build && java -jar build/libs/gs-spring-boot-0.1.0.jar`
 
 ## TODO
 
+- Guice injection of SheetsService
 x Script populate ScheduledFor/SchedulingInterval from existing backend
 - Success scheduling
 - Fail scheduling

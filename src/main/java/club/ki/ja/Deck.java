@@ -8,9 +8,9 @@ import java.util.List;
 public class Deck {
   static final Integer MAX_DECK_SIZE = 20;
   
-  private final SheetsQuickstart sq;
+  private final SheetsService sq;
 
-  public Deck(SheetsQuickstart sq) {
+  public Deck(SheetsService sq) {
     this.sq = sq;
   }
 
