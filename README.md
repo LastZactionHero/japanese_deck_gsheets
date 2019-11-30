@@ -5,15 +5,15 @@ Rewrite of existing app using a Google Sheets database as backend for easy manua
 
 ## TODO
 
-- Script populate ScheduledFor/SchedulingInterval from existing backend
+x Script populate ScheduledFor/SchedulingInterval from existing backend
 - Success scheduling
 - Fail scheduling
 - First time scheduling
-- Serverless setup
-- API: Deck
+x Spring setup
+x API: Deck
 - API: Success
 - API: Fail
-- API: Dump
+- MP3 URLs
 
 ## Usage
 

@@ -1,7 +1,23 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE")
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-mainClassName = 'SheetsQuickstart'
+bootJar {
+    baseName = 'gs-spring-boot'
+    version =  '0.1.0'
+}
+
+mainClassName = 'club.ki.ja.Application'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 version = '1.0'
@@ -15,4 +31,7 @@ dependencies {
     compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
     compile 'com.google.apis:google-api-services-sheets:v4-rev516-1.23.0'
     compile 'com.google.code.gson:gson:2.8.6'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-tomcat'
+    compile 'org.springframework:spring-jdbc:4.2.5.RELEASE'
 }
