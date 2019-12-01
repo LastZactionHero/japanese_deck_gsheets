@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -72,6 +73,17 @@ public class SheetsService {
     ValueRange response = this.service().spreadsheets().values().get(SPREADSHEET_ID, RANGE_PREFIX).execute();
     this.rows = response.getValues();
     return this.rows;
+  }
+
+  public void reschedule(Integer rowIdx, String scheduledFor, Integer schedulingInterval) throws IOException {
+    String range = String.format("Terms!B%d:C%d", rowIdx + 2, rowIdx + 2);
+    ValueRange updateRequestBody = new ValueRange();
+    updateRequestBody.setRange(range);
+    updateRequestBody.setMajorDimension("ROWS");
+    updateRequestBody.setValues(Arrays.asList(Arrays.asList(scheduledFor, schedulingInterval)));
+
+    service.spreadsheets().values().update(SPREADSHEET_ID, range, updateRequestBody).setValueInputOption("RAW")
+        .execute();
   }
 
   private Sheets service() throws GeneralSecurityException, IOException {
