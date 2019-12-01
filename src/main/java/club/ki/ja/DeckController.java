@@ -22,7 +22,7 @@ public class DeckController {
     return body;
   }
 
-  @RequestMapping(value = "/terms/{uuid}/success", method = RequestMethod.GET, produces = "application/json")
+  @RequestMapping(value = "/terms/{uuid}/success", method = RequestMethod.POST, produces = "application/json")
   public String success(@PathVariable String uuid) throws IOException {
     System.out.println(uuid);
 
@@ -39,7 +39,7 @@ public class DeckController {
     return "{}";
   }
 
-  @RequestMapping(value = "/terms/{uuid}/fail", method = RequestMethod.GET, produces = "application/json")
+  @RequestMapping(value = "/terms/{uuid}/fail", method = RequestMethod.POST, produces = "application/json")
   public String fail(@PathVariable String uuid) throws IOException {
     System.out.println(uuid);
 
