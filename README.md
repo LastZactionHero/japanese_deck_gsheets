@@ -10,13 +10,13 @@ Rewrite of existing app using a Google Sheets database as backend for easy manua
 
 - Guice injection of SheetsService
 x Script populate ScheduledFor/SchedulingInterval from existing backend
-- Success scheduling
-- Fail scheduling
-- First time scheduling
+x Success scheduling
+x Fail scheduling
+x First time scheduling
 x Spring setup
 x API: Deck
-- API: Success
-- API: Fail
+x API: Success
+x API: Fail
 - MP3 URLs
 
 ## Usage
