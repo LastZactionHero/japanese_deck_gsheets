@@ -2,8 +2,7 @@ FROM openjdk:11.0.5-stretch
 
 ADD . application/
 
-RUN mkdir application/src/main/resources
-ADD application/credentials.json application/src/main/resources/credentials.json
+RUN mkdir application/src/main
 
 RUN mkdir /application/tokens
 

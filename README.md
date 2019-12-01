@@ -10,7 +10,7 @@ Rewrite of existing app using a Google Sheets database as backend for easy manua
 
 1. Copy `credentials.json` to application directory
 2. `docker build -t ja_flashcards .`
-3. `docker run -e JA_SHEET_ID=1-Oe3qrFv3mhPnpY-48Y5BXHj2f6VzVhLQQT2OUx7KsM -p 8080:8080 -p 8888:8888 -v /application/tokens:/application/tokens -it ja_flashcards /bin/bash`
+3. `docker run -e JA_SHEET_ID=1-Oe3qrFv3mhPnpY-48Y5BXHj2f6VzVhLQQT2OUx7KsM -p 8080:8080 -p 8888:8888 -v /application/resources:/application/src/main/resources -v /application/tokens:/application/tokens -it ja_flashcards`
 
 ## TODO
 
