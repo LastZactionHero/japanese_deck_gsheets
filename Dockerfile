@@ -2,8 +2,6 @@ FROM openjdk:11.0.5-stretch
 
 ADD . application/
 
-RUN mkdir application/src/main
-
 RUN mkdir /application/tokens
 
 EXPOSE 8080
