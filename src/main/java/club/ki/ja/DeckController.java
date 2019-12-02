@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin
 public class DeckController {
   @RequestMapping(value = "/deck", method = RequestMethod.GET, produces = "application/json")
   public String deck() throws Exception {
