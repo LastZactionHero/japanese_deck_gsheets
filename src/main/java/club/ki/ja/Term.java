@@ -47,8 +47,6 @@ public class Term {
     System.out.printf("Success! %s\n", this.uuid);
     System.out.printf("Was: %d %s\n", this.scheduling_interval, this.scheduled_for);
 
-    this.scheduling_interval += 1;
-
     List<Duration> durations = Arrays.asList(
       Duration.of(1, ChronoUnit.MINUTES),
       Duration.of(10, ChronoUnit.MINUTES),
@@ -64,6 +62,7 @@ public class Term {
     DateTimeFormatter dtf = DateTimeFormatter.ISO_DATE_TIME;
     LocalDateTime futureDate = LocalDateTime.now().plus(durations.get(this.scheduling_interval)).truncatedTo(ChronoUnit.SECONDS);
     this.scheduled_for = dtf.format(futureDate);
+    this.scheduling_interval += 1;
 
     System.out.printf("Now: %d %s\n", this.scheduling_interval, this.scheduled_for);
   }
