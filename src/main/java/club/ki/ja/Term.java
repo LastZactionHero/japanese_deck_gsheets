@@ -48,13 +48,13 @@ public class Term {
     System.out.printf("Was: %d %s\n", this.scheduling_interval, this.scheduled_for);
 
     List<Duration> durations = Arrays.asList(
-      Duration.of(1, ChronoUnit.MINUTES),
-      Duration.of(10, ChronoUnit.MINUTES),
       Duration.of(1, ChronoUnit.HOURS),
       Duration.of(5, ChronoUnit.HOURS),
       Duration.of(1, ChronoUnit.DAYS),
+      Duration.of(3, ChronoUnit.DAYS),
       Duration.of(5, ChronoUnit.DAYS),
       Duration.of(25, ChronoUnit.DAYS),
+      Duration.of(40, ChronoUnit.DAYS),
       Duration.of(4 * 30, ChronoUnit.DAYS),
       Duration.of(1 * 365, ChronoUnit.DAYS)
     );
