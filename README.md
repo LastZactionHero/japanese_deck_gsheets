@@ -23,7 +23,8 @@ x Spring setup
 x API: Deck
 x API: Success
 x API: Fail
-- MP3 URLs
+x MP3 URLs
+- Bug: scheduling beyond 8 (are we one off now?)
 
 ## Usage
 
