@@ -57,4 +57,13 @@ public class DeckController {
 
     return "{}";
   }
+
+  @RequestMapping(value = "/terms", method = RequestMethod.GET, produces = "application/json")
+  public String index() throws IOException {
+    ArrayList<Term> terms = new SheetTerms(new SheetsService()).all();
+
+    Gson gson = new Gson();
+    String body = gson.toJson(terms);   
+    return body;
+  }
 }
